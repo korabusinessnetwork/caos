@@ -11,10 +11,9 @@
 - **Aprendido:** `memory/patterns.md` (padrão "agregado público sobre dado com RLS por usuário" via
   função `security definer` minimizada; nunca abrir SELECT alheio na tabela-base).
 - **Commit:** ✅ `8f726e9` em `rodada-6-ranking-publico` (push para `github.com/korabusinessnetwork/caos`).
-- **Proposta de ADR pendente:** ADR-011 (Ranking público: apelido opt-in, só dias provados) — texto
-  apresentado ao dono; **aguardando aval** antes de gravar em `docs/08_DECISOES/`.
-- **Pendente de decisão:**
-  1. Aprovar/ajustar o texto do ADR-011 (abaixo).
+- **ADR:** ✅ **ADR-011** (Ranking público: apelido opt-in, só dias provados) aprovado pelo dono e
+  gravado em `docs/08_DECISOES/adr-011-ranking-publico.md`; índice e backlog atualizados.
+- **Pendente de decisão:** nenhuma.
 - **Próximo item recomendado:** _(owner-gated)_ banco de 90 quests curadas (conteúdo do dono) e deploy
   real (segredos/infra) — não há item de código v1 desbloqueado restante. Ver "Boundary" no fim.
 

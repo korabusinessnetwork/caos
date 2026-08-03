@@ -31,6 +31,7 @@
 | ADR-008 | Monetização: loop grátis + CAOS+; sem dark patterns | [adr-008-monetizacao.md](adr-008-monetizacao.md) |
 | ADR-009 | Nome e marca "Caos Diário" / família "Caos" | [adr-009-nome-e-marca.md](adr-009-nome-e-marca.md) |
 | ADR-010 | Single-tenant B2C — exceção consciente ao white-label | [adr-010-single-tenant.md](adr-010-single-tenant.md) |
+| ADR-011 | Ranking público: apelido opt-in, só dias provados | [adr-011-ranking-publico.md](adr-011-ranking-publico.md) |
 
 > Índice espelhado em `memory/decisions.md`. Template para novos ADRs: [adr-000-template.md](adr-000-template.md).
 
