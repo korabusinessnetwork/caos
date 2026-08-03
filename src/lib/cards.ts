@@ -47,3 +47,19 @@ export async function buscarAlbum(): Promise<CartaAlbum[]> {
       ganhaEm: l.ganha_em,
     }));
 }
+
+/**
+ * Quantas cartas o catálogo tem numa temporada — usado pra desenhar as silhuetas
+ * das ainda-não-conquistadas no álbum. Só a contagem (`head: true`), nunca traz
+ * linhas. O catálogo `cards` é público (RLS `cards_select_all`); não há dado
+ * pessoal aqui.
+ */
+export async function contarCartasTemporada(temporada: number): Promise<number> {
+  const { count, error } = await supabase
+    .from('cards')
+    .select('*', { count: 'exact', head: true })
+    .eq('temporada', temporada);
+
+  if (error) throw new Error(error.message);
+  return count ?? 0;
+}

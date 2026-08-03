@@ -2,6 +2,19 @@
 
 > Uma seção por rodada, mais recente no topo. O ciclo não reinicia sozinho.
 
+## Rodada 4 — total da temporada no álbum (`total-temporada`) — 2026-08-02
+- **Spec:** `specs/total-temporada.md`
+- **Resultado da review:** aprovado sem ressalvas (8/8; suíte verde, `tsc` limpo, `vite build` OK).
+  Sem correção na review. Verificado no browser (MODO_DEMO): álbum "4/12", 4 cartas + 8 silhuetas,
+  sem erro. Ramo real conferido por código (contagem `count/head`, temporada da carta mais recente).
+- **Aprendido:** `memory/patterns.md` (padrão "contagem agregada sem trazer linhas" via `count/head`;
+  TODOs "agregado do M4" já desbloqueados pela RLS existente — fechados R3 e R4).
+- **Commit:** ✅ `8494d61` em `rodada-4-total-temporada` (push para `github.com/korabusinessnetwork/caos`).
+- **Pendente de decisão:**
+  1. Ranking público — o que expor (apelido? opt-in?) por ser LGPD-sensível (público 16+).
+- **Próximo item recomendado:** tela de Perfil ligada ao backend real (título por streak, editar apelido)
+  **ou** banco de 90 quests curadas (conteúdo do dono). Perfil é código verificável; quests são do dono.
+
 ## Rodada 3 — calendário real do streak (`calendario-real`) — 2026-08-02
 - **Spec:** `specs/calendario-real.md`
 - **Resultado da review:** aprovado sem ressalvas (9/9; suíte verde, `tsc` limpo, `vite build` OK).
