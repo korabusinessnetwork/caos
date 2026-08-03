@@ -9,7 +9,7 @@
   sem erro. Ramo real conferido por código (contagem `count/head`, temporada da carta mais recente).
 - **Aprendido:** `memory/patterns.md` (padrão "contagem agregada sem trazer linhas" via `count/head`;
   TODOs "agregado do M4" já desbloqueados pela RLS existente — fechados R3 e R4).
-- **Commit:** _(preenchido após o commit)_ em `rodada-4-total-temporada`.
+- **Commit:** ✅ `8494d61` em `rodada-4-total-temporada` (push para `github.com/korabusinessnetwork/caos`).
 - **Pendente de decisão:**
   1. Ranking público — o que expor (apelido? opt-in?) por ser LGPD-sensível (público 16+).
 - **Próximo item recomendado:** tela de Perfil ligada ao backend real (título por streak, editar apelido)
