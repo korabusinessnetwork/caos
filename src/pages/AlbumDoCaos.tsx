@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { EstadoTela, type Estado } from '../components/shared/EstadoTela';
 import { PortaoAuth } from '../components/shared/PortaoAuth';
-import { buscarAlbum } from '../lib/cards';
+import { buscarAlbum, contarCartasTemporada } from '../lib/cards';
 import { MODO_DEMO } from '../lib/ambiente';
 import { DEMO_ALBUM, DEMO_TOTAL_TEMPORADA } from '../lib/demo';
 import type { CartaAlbum, Raridade } from '../lib/tipos';
@@ -30,10 +30,15 @@ function ConteudoAlbum() {
     try {
       const album = await buscarAlbum();
       setCartas(album);
-      // O total da temporada (pra desenhar as silhuetas faltantes) vem do
-      // catálogo de cards — serviço agregado que entra no M4.
-      setTotalTemporada(album.length);
-      setEstado(album.length === 0 ? 'empty' : 'success');
+      if (album.length === 0) {
+        setTotalTemporada(0);
+        setEstado('empty');
+        return;
+      }
+      // Total da temporada (pra desenhar as silhuetas faltantes) vem do catálogo
+      // público de cards, pela temporada da carta mais recente do usuário.
+      setTotalTemporada(await contarCartasTemporada(album[0].temporada));
+      setEstado('success');
     } catch {
       setEstado('error');
     }

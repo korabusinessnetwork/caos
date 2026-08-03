@@ -142,6 +142,13 @@
 ✅ `export { processarDia } from '../../../src/lib/dominio/streak.ts'` (módulo-folha)
 ❌ reexportar `cartas.ts` pelo shim (puxa `./tiktok` sem extensão → Deno falha no deploy)
 
+### Contagem agregada sem trazer linhas
+- Total/estatística (nº de cartas da temporada, dias do mês) usa `select('*', { count: 'exact', head: true })` — devolve só o `count`, zero linhas trafegadas, zero dado pessoal.
+- Muitos "TODO: serviço agregado do M4" na verdade já estão **desbloqueados** pela RLS existente (`cards_select_all` p/ catálogo público; `*_select_own` p/ dado do usuário): fecham com um serviço de leitura/contagem, sem backend novo. Fechados assim: calendário do streak (`buscarDiasCumpridos`, R3) e total da temporada (`contarCartasTemporada`, R4).
+
+✅ `supabase.from('cards').select('*', { count: 'exact', head: true }).eq('temporada', t)`
+❌ `select('id')` e depois `data.length` (traz N linhas só pra contar)
+
 ## Padrões de UI/UX
 
 ### Estados obrigatórios
