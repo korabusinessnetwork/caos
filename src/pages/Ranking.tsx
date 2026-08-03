@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { EstadoTela, type Estado } from '../components/shared/EstadoTela';
+import { buscarRankingProvados } from '../lib/ranking';
 import { MODO_DEMO } from '../lib/ambiente';
 import { DEMO_RANKING_FOGO, DEMO_RANKING_STREAK } from '../lib/demo';
 import type { EntradaRanking } from '../lib/tipos';
@@ -39,12 +40,27 @@ export function Ranking() {
       setEstado('success');
       return;
     }
-    // O leaderboard público depende de uma view agregada no servidor (fase 2):
-    // a RLS por usuário impede o cliente de contar streaks alheios.
-    setEstado('empty');
+    // Ranking real de dias provados (opt-in). Fogo é fase 2 (ADR-007) → vazio.
+    setFogos([]);
+    let vivo = true;
+    setEstado('loading');
+    buscarRankingProvados()
+      .then((lista) => {
+        if (!vivo) return;
+        setStreaks(lista);
+        setEstado(lista.length === 0 ? 'empty' : 'success');
+      })
+      .catch(() => {
+        if (vivo) setEstado('error');
+      });
+    return () => {
+      vivo = false;
+    };
   }, []);
 
   const entradas = aba === 'streak' ? streaks : fogos;
+  // Fogo ainda não existe no real (fase 2): a aba mostra vazio, não a lista de streaks.
+  const estadoExibido = !MODO_DEMO && aba === 'fogo' ? 'empty' : estado;
 
   return (
     <div className="ranking">
@@ -57,7 +73,7 @@ export function Ranking() {
             className={`ranking__aba ${aba === 'streak' ? 'ranking__aba--ativa' : ''}`}
             onClick={() => setAba('streak')}
           >
-            maiores streaks
+            mais dias provados
           </button>
           <button
             role="tab"
@@ -71,8 +87,12 @@ export function Ranking() {
       </header>
 
       <EstadoTela
-        estado={estado}
-        mensagemVazio="o ranking nacional acende quando o caos crescer. volta logo."
+        estado={estadoExibido}
+        mensagemVazio={
+          aba === 'fogo'
+            ? 'os fogos em dupla chegam em breve.'
+            : 'ninguém no ranking ainda. ative o ranking no seu perfil e prove seus dias.'
+        }
         mensagemErro="não deu pra carregar o ranking."
       >
         <ListaRanking entradas={entradas} />

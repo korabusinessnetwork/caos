@@ -149,6 +149,14 @@
 ✅ `supabase.from('cards').select('*', { count: 'exact', head: true }).eq('temporada', t)`
 ❌ `select('id')` e depois `data.length` (traz N linhas só pra contar)
 
+### Agregado público sobre dado com RLS por usuário
+- Quando o cliente precisa de um agregado **entre usuários** (ranking, contagem nacional) mas a RLS isola por `auth.uid()`, a agregação **não** pode rodar no cliente. Padrão: **função `security definer`** com `set search_path = public`, que agrega e retorna só o **mínimo** (LGPD) — nunca `user_id`/e-mail. As tabelas-base mantêm a RLS; expõe-se só `grant execute` da função a `anon`/`authenticated`.
+- Nunca abrir uma policy de SELECT alheio na tabela-base pra viabilizar ranking — isso vaza dado individual. A função definer é a fronteira.
+- `limite` sempre com clamp server-side (`least(greatest(coalesce(l,50),1),200)`); opt-in **opt-out por padrão** quando expõe identidade (apelido). Ex.: `ranking_dias_provados` (R6).
+
+✅ função definer retorna `(username, dias_provados)` só de `ranking_publico = true`
+❌ `create policy ... on completions for select using (true)` pra contar dias alheios
+
 ## Padrões de UI/UX
 
 ### Estados obrigatórios

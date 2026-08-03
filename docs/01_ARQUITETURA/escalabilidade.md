@@ -43,6 +43,7 @@ Legenda: 🟢 folgado no free · 🟡 aguenta com vigilância/mitigação · �
 | **Pico das 7h** (leitura simultânea) | compute compartilhado | 🟢 | 🟡 servir quest via cache | 🔴 quest do dia **tem** que vir de CDN/edge, não do Postgres por request |
 | **Web Push enviados/dia** | infra própria de disparo | 🟢 2 mil/dia | 🟡 40 mil/dia (cron em lote) | 🔴 4 mi/dia (120 mi/mês) → worker dedicado + fila |
 | **Virada do dia** (`fechar-o-dia`) | 1 Edge Function/dia | 🟢 varre em memória | 🟡 páginas de 1000 + upsert em lote | 🔴 job paginado por fila (não 1 função síncrona varrendo 1 mi) |
+| **Ranking de dias provados** (`ranking_dias_provados`) | função agregada por request | 🟢 count por leitura | 🟡 índice parcial `provado` + top-N (cache curto) | 🔴 materialized view com refresh agendado (não agregar 1 mi por request) |
 | **Realtime concorrente** | ~200 conexões | 🟢 (evitar no loop) | 🟡 (cap, sem realtime no 7h) | 🔴 inviável em massa → não usar realtime no loop |
 | **Bandwidth Vercel** | 100 GB/mês | 🟢 | 🟢 (assets cacheiam) | 🔴 → Pro + overage |
 | **Edge Functions** | ~500 mil invocações/mês | 🟢 | 🟡 | 🔴 → mover lógica quente p/ worker/API |

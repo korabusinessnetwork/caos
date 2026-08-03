@@ -18,6 +18,8 @@ export interface Perfil {
   id: string;
   username: string;
   titulo: string | null;
+  /** Opt-in de aparecer no ranking nacional (LGPD: opt-out por padrão). */
+  rankingPublico: boolean;
   createdAt: string;
 }
 

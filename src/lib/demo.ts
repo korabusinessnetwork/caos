@@ -29,6 +29,7 @@ export const DEMO_PERFIL: Perfil = {
   id: 'demo',
   username: 'voce',
   titulo: 'Agente do Caos',
+  rankingPublico: false,
   createdAt: '2026-06-01',
 };
 

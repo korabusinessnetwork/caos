@@ -20,7 +20,7 @@
 ### v2
 - [ ] Fogo do Caos completo (duplas, marcos 7/30/90, máx. 5, cobrança 20h)
 - [ ] Contestação social "duvido" (parceiro de fogo)
-- [ ] Ranking oficial (só dias provados)
+- [x] Ranking oficial (só dias provados) — ADR-011; apelido opt-in, função `security definer` (Rodada 6)
 - [ ] Monetização camadas 1–2: vida extra, freeze de fogo, **CAOS+**
 - [ ] Modo Insano (quest extra diária do CAOS+)
 

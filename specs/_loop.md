@@ -2,6 +2,21 @@
 
 > Uma seção por rodada, mais recente no topo. O ciclo não reinicia sozinho.
 
+## Rodada 6 — ranking público de dias provados (`ranking-publico`) — 2026-08-02
+- **Spec:** `specs/ranking-publico.md`
+- **Resultado da review:** aprovado sem ressalvas (10/10; suíte verde, `tsc` limpo, `vite build` OK).
+  Sem correção na review. Verificado no browser (MODO_DEMO): aba "mais dias provados" + lista demo,
+  `Perfil` sem toggle no demo. SQL/código conferidos (função `security definer` minimizada, opt-out por padrão).
+- **Destravou:** a decisão LGPD do ranking (parada desde a Rodada 1) — o dono definiu apelido opt-in, só dias provados.
+- **Aprendido:** `memory/patterns.md` (padrão "agregado público sobre dado com RLS por usuário" via
+  função `security definer` minimizada; nunca abrir SELECT alheio na tabela-base).
+- **Commit:** ✅ `8f726e9` em `rodada-6-ranking-publico` (push para `github.com/korabusinessnetwork/caos`).
+- **ADR:** ✅ **ADR-011** (Ranking público: apelido opt-in, só dias provados) aprovado pelo dono e
+  gravado em `docs/08_DECISOES/adr-011-ranking-publico.md`; índice e backlog atualizados.
+- **Pendente de decisão:** nenhuma.
+- **Próximo item recomendado:** _(owner-gated)_ banco de 90 quests curadas (conteúdo do dono) e deploy
+  real (segredos/infra) — não há item de código v1 desbloqueado restante. Ver "Boundary" no fim.
+
 ## Rodada 5 — UI de exclusão de conta (`excluir-conta-ui`) — 2026-08-02
 - **Spec:** `specs/excluir-conta-ui.md`
 - **Resultado da review:** aprovado sem ressalvas (9/9; suíte verde, `tsc` limpo, `vite build` OK).
@@ -27,7 +42,8 @@ PWA + push, 5 Edge Functions, RLS em toda tabela, cron documentado) está implem
 restantes **exigem decisão/ação do dono** e não devem ser inventados pelo agente:
 
 1. **Banco de 90 quests curadas** — conteúdo da curadoria (Matheus + Guilherme + Macedo), não código.
-2. **Ranking oficial** — decisão LGPD pendente (o que expor: apelido? opt-in? público 16+).
+2. ~~**Ranking oficial** — decisão LGPD pendente.~~ ✅ **Destravado e feito na Rodada 6** (dono decidiu
+   apelido opt-in, só dias provados).
 3. **Deploy real** — criar o projeto Supabase, setar os segredos (VAPID, CRON_SECRET), rodar o SQL de
    cron, ligar o Vercel — infra e segredos do dono.
 

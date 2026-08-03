@@ -13,11 +13,14 @@
 -- profiles — dados públicos do usuário (1:1 com auth.users)
 -- -----------------------------------------------------------------------------
 create table if not exists profiles (
-  id           uuid primary key references auth.users (id) on delete cascade,
-  username     text unique not null,
-  titulo       text,                          -- título por streak (ver app)
-  created_at   timestamptz not null default now()
+  id               uuid primary key references auth.users (id) on delete cascade,
+  username         text unique not null,
+  titulo           text,                      -- título por streak (ver app)
+  ranking_publico  boolean not null default false, -- opt-in do ranking (LGPD)
+  created_at       timestamptz not null default now()
 );
+-- ranking_publico: opt-in do usuário pra aparecer no ranking nacional (LGPD:
+-- opt-out por padrão). Ver a função ranking_dias_provados() no fim do arquivo.
 alter table profiles enable row level security;
 -- SELECT público (perfil é compartilhável); escrita só do dono.
 create policy profiles_select_all on profiles for select using (true);
@@ -161,6 +164,31 @@ create policy push_subs_delete_own on push_subscriptions for delete using (auth.
 alter table quests
   add constraint quests_carta_fk
   foreign key (carta_id) references cards (id) on delete set null;
+
+-- -----------------------------------------------------------------------------
+-- ranking_dias_provados — leaderboard nacional (só dias provados, apelido opt-in)
+-- -----------------------------------------------------------------------------
+-- Decisão do dono (2026-08-02): expor top por DIAS PROVADOS, só de quem optou.
+-- security definer + search_path fixo: agrega entre usuários (a RLS por usuário
+-- de completions impede o cliente de contar dados alheios), mas retorna só
+-- apelido + contagem de opt-ins — sem user_id/e-mail (minimização LGPD). As
+-- tabelas-base seguem com RLS; só a função é exposta ao cliente.
+create or replace function ranking_dias_provados(limite int default 50)
+returns table (username text, dias_provados bigint)
+language sql
+stable
+security definer
+set search_path = public
+as $$
+  select p.username, count(c.id) as dias_provados
+  from profiles p
+  join completions c on c.user_id = p.id and c.provado = true
+  where p.ranking_publico = true
+  group by p.username
+  order by dias_provados desc, p.username asc
+  limit least(greatest(coalesce(limite, 50), 1), 200)
+$$;
+grant execute on function ranking_dias_provados(int) to anon, authenticated;
 
 -- =============================================================================
 -- Notas de segurança (ver docs/11_SEGURANCA):

@@ -4,6 +4,7 @@ import { PortaoAuth } from '../components/shared/PortaoAuth';
 import { StreakBadge } from '../components/shared/StreakBadge';
 import { FogoBadge } from '../components/shared/FogoBadge';
 import { ExcluirConta } from '../components/shared/ExcluirConta';
+import { ToggleRanking } from '../components/shared/ToggleRanking';
 import { useAuth } from '../context/AuthContext';
 import { useNavegacao } from '../context/NavegacaoContext';
 import { tituloPorStreak } from '../lib/dominio/streak';
@@ -94,6 +95,11 @@ function ConteudoPerfil() {
         <button type="button" className="perfil__compartilhar" onClick={compartilhar}>
           {compartilhado ? 'copiado ✓' : 'compartilhar meu caos'}
         </button>
+
+        {/* Opt-in do ranking nacional (LGPD) — só no fluxo real. */}
+        {!modoDemo && perfil && (
+          <ToggleRanking inicial={perfil.rankingPublico} />
+        )}
 
         <section className="perfil__secao">
           <h3 className="perfil__secao-titulo">fogos ativos</h3>
