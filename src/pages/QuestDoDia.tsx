@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { CardDoCaos, type Selo } from '../components/shared/CardDoCaos';
 import { BotaoCumpri } from '../components/shared/BotaoCumpri';
+import { PayoffCumpri } from '../components/shared/PayoffCumpri';
 import { ContadorSocial } from '../components/shared/ContadorSocial';
 import { Countdown } from '../components/shared/Countdown';
 import { EstadoTela, type Estado } from '../components/shared/EstadoTela';
@@ -13,7 +14,8 @@ import { buscarQuestDoDia, jaCumpriu, marcarCumpri } from '../lib/quests';
 import { permissaoAtual, pushSuportado } from '../lib/push';
 import { supabaseConfigurado } from '../lib/supabase';
 import { MODO_DEMO } from '../lib/ambiente';
-import type { Quest } from '../lib/tipos';
+import { DEMO_STREAK } from '../lib/demo';
+import type { Quest, ResultadoCumpri } from '../lib/tipos';
 import './QuestDoDia.css';
 
 const QUEST_DEMO: Quest = {
@@ -38,6 +40,7 @@ export function QuestDoDia() {
   const [contador, setContador] = useState<number | null>(null);
   const [pedindoLogin, setPedindoLogin] = useState(false);
   const [ofertarPush, setOfertarPush] = useState(false);
+  const [payoff, setPayoff] = useState<ResultadoCumpri | null>(null);
 
   const carregar = useCallback(async () => {
     setEstado('loading');
@@ -87,14 +90,31 @@ export function QuestDoDia() {
     async ({ tiktokUrl }: { tiktokUrl: string | null }) => {
       if (MODO_DEMO) {
         await new Promise((r) => setTimeout(r, 650));
-        setSelo(tiktokUrl ? 'provado' : 'cumpri');
+        const provado = tiktokUrl != null;
+        // Resultado 100% local: streak base do demo +1, carta = a quest demo.
+        const fabricado: ResultadoCumpri = {
+          provado,
+          streak: DEMO_STREAK.atual + 1,
+          melhor: Math.max(DEMO_STREAK.melhor, DEMO_STREAK.atual + 1),
+          ganhouCarta: true,
+          carta: {
+            nome: (quest ?? QUEST_DEMO).titulo,
+            raridade: (quest ?? QUEST_DEMO).raridadeAlvo,
+            temporada: 1,
+            arteUrl: null,
+            provado,
+          },
+        };
+        setSelo(provado ? 'provado' : 'cumpri');
         setContador((c) => (c == null ? c : c + 1));
+        setPayoff(fabricado);
         talvezOferecerPush();
         return;
       }
       if (!quest) throw new Error('Sem quest carregada.');
       const c = await marcarCumpri(quest.id, { tiktokUrl });
       setSelo(c.provado ? 'provado' : 'cumpri');
+      setPayoff(c);
       talvezOferecerPush();
     },
     [quest, talvezOferecerPush],
@@ -170,6 +190,14 @@ export function QuestDoDia() {
           </div>
         )}
       </EstadoTela>
+
+      {payoff && (
+        <PayoffCumpri
+          resultado={payoff}
+          questDia={quest?.dia ?? null}
+          onFechar={() => setPayoff(null)}
+        />
+      )}
     </div>
   );
 }

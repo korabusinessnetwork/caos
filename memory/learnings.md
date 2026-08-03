@@ -55,6 +55,7 @@
 |---|---|---|
 | 2026-08-02 | `fechar-o-dia`: recarga de vida (24h) na ordem **recarga→falta** com rollover diário torna o streak **imortal** — a vida volta a tempo de absorver a falta do dia seguinte, contra ADR-005 ("sem streak que nunca morre"). Pego no `/review`, não em produção. | Ordem correta: **falta-antes-de-recarga** (a 2ª falta consecutiva zera). Toda mecânica com timer de recarga ≈ cadência de perda precisa checar o caso-limite de sincronia dos dois relógios. |
 | 2026-08-02 | Edge Functions Deno só reusam `src/lib/dominio` via `_shared/dominio.ts` para módulos **sem imports internos** (`streak`/`vidas`/`tiktok`/`datas`); Deno exige extensão `.ts` e `cartas.ts` importa `./tiktok` sem extensão → não dá pra reexportar pelo shim. | Reexportar pelo shim só os módulos-folha; regra que dependa de `cartas.ts` compõe-se **dentro** da função (como no `processar-cumpri`). |
+| 2026-08-02 | `BotaoCumpri.tsx` afirmava estaticamente na fase sucesso "carta no álbum. streak +1." — número e recompensa **cravados na copy**, enquanto o resultado real (streak, carta, PROVADO) é derivado no servidor (`processar-cumpri` → `ResultadoCumpri`). Copy fixa mente quando a virada zera o streak ou o CUMPRI é idempotente (sem carta). | Nunca cravar resultado de recompensa em texto de UI. Surfacar sempre o `ResultadoCumpri` do servidor (o `PayoffCumpri` faz isso); no demo, fabricar o mesmo tipo — copy estática fica **neutra** ("o caos registrou."). |
 
 ## Aprendizados de Produto
 
