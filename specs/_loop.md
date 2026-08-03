@@ -9,7 +9,7 @@
   "Agente do Caos", carta "O NARRADOR" raridade rara, selo PROVADO só com link, dispensar volta ao card.
 - **Aprendido:** `memory/learnings.md` (nunca cravar resultado de recompensa em copy de UI — surfacar
   o `ResultadoCumpri` do servidor; `BotaoCumpri` neutralizado).
-- **Commit:** _(preenchido após o commit)_ em `rodada-2-payoff-cumpri`.
+- **Commit:** ✅ `845dae2` em `rodada-2-payoff-cumpri` (push para `github.com/korabusinessnetwork/caos`).
 - **Pendente de decisão:**
   1. Ranking público — o que expor (apelido? opt-in?) por ser LGPD-sensível (público 16+).
 - **Próximo item recomendado:** persistir e surfacar `EstadoStreak`/`EstadoVidas` reais na tela Streak
