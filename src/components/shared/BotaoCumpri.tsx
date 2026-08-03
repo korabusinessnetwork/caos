@@ -41,7 +41,7 @@ export function BotaoCumpri({ onCumprir }: BotaoCumpriProps) {
         <span className="cumpri__selo-ok">
           {linkPreenchido ? 'PROVADO' : 'CUMPRI'}
         </span>
-        <p className="cumpri__msg">carta no álbum. streak +1. o caos registrou.</p>
+        <p className="cumpri__msg">o caos registrou.</p>
       </div>
     );
   }

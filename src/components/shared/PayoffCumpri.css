@@ -1,0 +1,193 @@
+/* Payoff do CUMPRI — overlay celebratório. Estética Atmosfera Viral (3 cores). */
+.payoff {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--esp-5);
+  background:
+    radial-gradient(90% 60% at 50% 40%, rgba(139, 0, 0, 0.22), transparent 70%),
+    rgba(10, 10, 10, 0.86);
+  animation: payoff-fundo var(--transicao) ease both;
+}
+
+.payoff__conteudo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--esp-4);
+  width: 100%;
+  max-width: 340px;
+  text-align: center;
+  animation: payoff-sobe 420ms cubic-bezier(0.2, 0.9, 0.2, 1) both;
+}
+
+.payoff__chamada {
+  font-size: var(--txt-xs);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--caos-branco-40);
+}
+
+.payoff__streak {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 0.9;
+}
+
+.payoff__streak-num {
+  font-family: var(--fonte-titulo);
+  font-size: var(--txt-hero);
+  color: var(--caos-branco);
+}
+
+.payoff__streak-rot {
+  margin-top: var(--esp-2);
+  font-size: var(--txt-xs);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--caos-vermelho-vivo);
+}
+
+.payoff__titulo {
+  font-family: var(--fonte-titulo);
+  font-size: var(--txt-md);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--caos-branco);
+}
+
+/* --- A carta ganha (mini, com watermark inegociável) --- */
+.payoff__carta {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--esp-2);
+  width: 100%;
+  padding: var(--esp-5) var(--esp-4);
+  border: 1px solid var(--cor-rar, var(--caos-linha));
+  border-radius: var(--raio-md);
+  background:
+    radial-gradient(130% 80% at 50% 0%, rgba(139, 0, 0, 0.16), transparent 60%),
+    var(--caos-preto-2);
+  overflow: hidden;
+  isolation: isolate;
+  animation: payoff-carta 520ms 120ms cubic-bezier(0.2, 0.9, 0.2, 1) both;
+}
+
+.payoff__carta-marca {
+  position: absolute;
+  right: -0.06em;
+  bottom: -0.12em;
+  z-index: 0;
+  font-family: var(--fonte-titulo);
+  font-size: 3.5rem;
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+  color: var(--caos-branco);
+  opacity: 0.06;
+  pointer-events: none;
+  user-select: none;
+}
+
+.payoff__carta > *:not(.payoff__carta-marca) {
+  position: relative;
+  z-index: 1;
+}
+
+.payoff__carta-raridade {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--esp-2);
+  font-size: var(--txt-xs);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cor-rar, var(--caos-branco-70));
+}
+
+.payoff__carta-forma {
+  font-size: 0.8em;
+  color: var(--cor-rar, var(--caos-branco));
+}
+
+.payoff__carta-nome {
+  font-family: var(--fonte-titulo);
+  font-size: var(--txt-xl);
+  color: var(--caos-branco);
+  text-wrap: balance;
+}
+
+.payoff__carta-selo {
+  padding: var(--esp-1) var(--esp-3);
+  border-radius: var(--raio-sm);
+  background: var(--caos-vermelho);
+  color: var(--caos-branco);
+  font-family: var(--fonte-titulo);
+  font-size: var(--txt-xs);
+  letter-spacing: 0.14em;
+}
+
+/* Raridade: acento por cor (o rótulo/forma comunica sem depender dela). */
+.payoff__carta--comum {
+  --cor-rar: var(--rar-comum);
+}
+.payoff__carta--rara {
+  --cor-rar: var(--rar-rara);
+}
+.payoff__carta--lendaria {
+  --cor-rar: var(--rar-lendaria);
+}
+.payoff__carta--secreta {
+  --cor-rar: var(--rar-secreta);
+}
+
+.payoff__continuar {
+  width: 100%;
+  min-height: var(--toque-min);
+  margin-top: var(--esp-2);
+  border: 1px solid var(--caos-linha);
+  border-radius: var(--raio-sm);
+  background: none;
+  color: var(--caos-branco);
+  font-family: var(--fonte-titulo);
+  font-size: var(--txt-md);
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: border-color var(--transicao), color var(--transicao);
+}
+
+.payoff__continuar:hover {
+  border-color: var(--caos-branco-40);
+}
+
+@keyframes payoff-fundo {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes payoff-sobe {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+@keyframes payoff-carta {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .payoff,
+  .payoff__conteudo,
+  .payoff__carta {
+    animation: none;
+  }
+}
