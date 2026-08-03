@@ -4,7 +4,7 @@ import { PortaoAuth } from '../components/shared/PortaoAuth';
 import { StreakBadge } from '../components/shared/StreakBadge';
 import { VidaIndicator } from '../components/shared/VidaIndicator';
 import { tituloPorStreak } from '../lib/dominio/streak';
-import { buscarStreak } from '../lib/streak';
+import { buscarDiasCumpridos, buscarStreak } from '../lib/streak';
 import { buscarVidas } from '../lib/lives';
 import { MODO_DEMO } from '../lib/ambiente';
 import { DEMO_DIAS_CUMPRIDOS, DEMO_STREAK, DEMO_VIDAS } from '../lib/demo';
@@ -55,12 +55,17 @@ function ConteudoStreak() {
       return;
     }
     try {
-      // O histórico por dia (calendário) depende de ler completions do mês —
-      // serviço que entra no M4; por ora a grade mostra só o mês corrente.
-      const [s, v] = await Promise.all([buscarStreak(), buscarVidas()]);
+      // Calendário real: dias com CUMPRI no mês corrente (mesmo mês da grade
+      // de montarCalendario; o dia da célula é resolvido em SP no serviço).
+      const agora = new Date();
+      const [s, v, dias] = await Promise.all([
+        buscarStreak(),
+        buscarVidas(),
+        buscarDiasCumpridos(agora.getFullYear(), agora.getMonth() + 1),
+      ]);
       setStreak(s);
       setVidas(v);
-      setDiasCumpridos([]);
+      setDiasCumpridos(dias);
       setEstado('success');
     } catch {
       setEstado('error');
