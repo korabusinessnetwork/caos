@@ -12,9 +12,27 @@
 - **Commit:** ✅ `752cdfe` em `rodada-5-excluir-conta-ui` (push para `github.com/korabusinessnetwork/caos`).
 - **Pendente de decisão:**
   1. Ranking público — o que expor (apelido? opt-in?) por ser LGPD-sensível (público 16+).
-- **Próximo item recomendado:** persistência da inscrição de Web Push (`push.ts` só assina no cliente;
-  falta salvar a subscription no backend p/ o `enviar-toque` ter destino) — desbloqueia os 4 toques diários.
-  **Requer backend** (tabela `push_subscriptions` + RLS + migration + Edge Function receptora) → decisão do dono se entra agora.
+- **Próximo item recomendado:** _(auditoria pós-Rodada 5)_ **nenhum item de código v1 desbloqueado resta.**
+  A auditoria do `/proximo` mostrou que Web Push já está completo ponta a ponta (tabela `push_subscriptions`
+  + RLS, `salvarInscricao`/`ativarNotificacoes`, `OfertaPush` chama, `enviar-toque` + pg_cron dos 4 toques
+  documentados). Streak/Álbum/Perfil já liam backend real; as Rodadas 3–5 fecharam os gaps reais
+  (calendário, total da temporada, UI de exclusão LGPD). O que resta é **owner-gated** (ver "Boundary" abaixo).
+
+---
+
+## ⛔ Boundary do loop — 2026-08-02 (após Rodada 5)
+
+O loop chegou ao limite do que é construível sem o dono. Todo o código v1 (6 telas, camada de serviços,
+PWA + push, 5 Edge Functions, RLS em toda tabela, cron documentado) está implementado. Os itens v1
+restantes **exigem decisão/ação do dono** e não devem ser inventados pelo agente:
+
+1. **Banco de 90 quests curadas** — conteúdo da curadoria (Matheus + Guilherme + Macedo), não código.
+2. **Ranking oficial** — decisão LGPD pendente (o que expor: apelido? opt-in? público 16+).
+3. **Deploy real** — criar o projeto Supabase, setar os segredos (VAPID, CRON_SECRET), rodar o SQL de
+   cron, ligar o Vercel — infra e segredos do dono.
+
+Retomar o ciclo quando o dono destravar um destes (ex.: definir a regra do ranking) ou trouxer um
+item novo: `/ciclo <item>`.
 
 ## Rodada 4 — total da temporada no álbum (`total-temporada`) — 2026-08-02
 - **Spec:** `specs/total-temporada.md`
