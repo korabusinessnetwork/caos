@@ -1,0 +1,157 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-5);
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 9 / 14;
+  padding: var(--esp-5);
+  border: 1px solid var(--caos-linha);
+  border-radius: var(--raio-lg);
+  background:
+    radial-gradient(140% 90% at 50% 0%, rgba(139, 0, 0, 0.14), transparent 55%),
+    var(--caos-preto-2);
+  overflow: hidden;
+  isolation: isolate;
+  box-shadow: 0 24px 60px -24px rgba(0, 0, 0, 0.9);
+}
+
+/* --- Watermark inegociável (ADR-008): sempre visível, nunca removível. --- */
+.card__watermark {
+  position: absolute;
+  right: -0.08em;
+  bottom: -0.14em;
+  z-index: 0;
+  font-family: var(--fonte-titulo);
+  font-size: 6.5rem;
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+  color: var(--caos-branco);
+  opacity: 0.05;
+  pointer-events: none;
+  user-select: none;
+}
+
+.card > *:not(.card__watermark) {
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Topo: dia + raridade --- */
+.card__topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--txt-xs);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--caos-branco-40);
+}
+
+.card__raridade {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--esp-2);
+  padding: var(--esp-1) var(--esp-3);
+  border: 1px solid var(--cor-rar, var(--caos-linha));
+  border-radius: 999px;
+  color: var(--cor-rar, var(--caos-branco-70));
+  font-size: var(--txt-xs);
+  letter-spacing: 0.16em;
+}
+
+.card__raridade-forma {
+  font-size: 0.7em;
+  color: var(--cor-rar, var(--caos-branco));
+}
+
+/* --- Corpo --- */
+.card__corpo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-4);
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.card__titulo {
+  font-size: var(--txt-2xl);
+  color: var(--caos-branco);
+  text-wrap: balance;
+}
+
+.card__comando {
+  font-size: var(--txt-lg);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--caos-branco);
+}
+
+.card__regra {
+  font-size: var(--txt-sm);
+  line-height: 1.35;
+  color: var(--caos-branco-70);
+  border-left: 2px solid var(--cor-rar, var(--caos-vermelho));
+  padding-left: var(--esp-3);
+}
+
+.card__regra-rotulo {
+  display: block;
+  font-size: var(--txt-xs);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--caos-branco-40);
+  margin-bottom: var(--esp-1);
+}
+
+/* --- Rodapé: hashtag + selo de estado --- */
+.card__rodape {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--esp-3);
+}
+
+.card__hashtag {
+  font-family: var(--fonte-titulo);
+  font-size: var(--txt-sm);
+  letter-spacing: 0.02em;
+  color: var(--caos-branco-70);
+  text-transform: uppercase;
+}
+
+.card__selo {
+  padding: var(--esp-1) var(--esp-3);
+  border-radius: var(--raio-sm);
+  font-family: var(--fonte-titulo);
+  font-size: var(--txt-xs);
+  letter-spacing: 0.14em;
+}
+
+.card__selo--cumpri {
+  background: var(--caos-branco);
+  color: var(--caos-preto);
+}
+
+.card__selo--provado {
+  background: var(--caos-vermelho);
+  color: var(--caos-branco);
+}
+
+/* --- Raridades: acento por cor (o rótulo/forma comunica sem depender dela) --- */
+.card--comum {
+  --cor-rar: var(--rar-comum);
+}
+.card--rara {
+  --cor-rar: var(--rar-rara);
+  border-color: rgba(139, 0, 0, 0.5);
+}
+.card--lendaria {
+  --cor-rar: var(--rar-lendaria);
+  border-color: rgba(212, 175, 55, 0.5);
+}
+.card--secreta {
+  --cor-rar: var(--rar-secreta);
+  border-color: rgba(123, 47, 247, 0.5);
+}

@@ -1,0 +1,27 @@
+.vida {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--esp-2);
+  padding: var(--esp-2) var(--esp-4);
+  border: 1px solid var(--caos-linha);
+  border-radius: 999px;
+  font-size: var(--txt-sm);
+}
+
+.vida__forma {
+  font-size: var(--txt-lg);
+  line-height: 1;
+}
+
+.vida--cheia {
+  color: var(--caos-branco);
+  border-color: var(--caos-vermelho);
+}
+
+.vida--cheia .vida__forma {
+  color: var(--caos-vermelho-vivo);
+}
+
+.vida--gasta {
+  color: var(--caos-branco-40);
+}

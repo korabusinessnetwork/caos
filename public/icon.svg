@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Caos">
+  <!-- Fundo preto full-bleed (seguro pra ícone maskable). Paleta Atmosfera Viral. -->
+  <rect width="512" height="512" fill="#0A0A0A"/>
+  <!-- "C" de Caos: um laço quebrado (o caos rompe o círculo). Geométrico, sem fonte. -->
+  <path d="M 370.9 159.6 A 150 150 0 1 0 370.9 352.4"
+        fill="none" stroke="#F5F5F5" stroke-width="56" stroke-linecap="round"/>
+  <!-- A faísca vermelha na boca do C: o único acento de cor. -->
+  <circle cx="392" cy="256" r="34" fill="#8B0000"/>
+</svg>

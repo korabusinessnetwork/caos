@@ -1,0 +1,62 @@
+.fogo {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-3);
+  width: 100%;
+  padding: var(--esp-3) var(--esp-4);
+  border: 1px solid var(--cor-fogo, var(--caos-linha));
+  border-radius: var(--raio-md);
+  background: var(--caos-preto-2);
+}
+
+.fogo__glyph {
+  font-size: var(--txt-xl);
+  line-height: 1;
+  color: var(--cor-fogo, var(--caos-vermelho-vivo));
+}
+
+.fogo__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-right: auto;
+}
+
+.fogo__dupla {
+  font-family: var(--fonte-titulo);
+  font-size: var(--txt-sm);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--caos-branco);
+}
+
+.fogo__dias {
+  font-size: var(--txt-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--caos-branco-40);
+}
+
+.fogo__estado {
+  font-size: var(--txt-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--caos-branco-40);
+  text-align: right;
+}
+
+.fogo__estado--pendente {
+  color: var(--caos-vermelho-vivo);
+  font-weight: 700;
+}
+
+/* Marcos do fogo (ADR-007) — cor semântica, como as raridades da carta. */
+.fogo--normal {
+  --cor-fogo: var(--caos-vermelho);
+}
+.fogo--azul {
+  --cor-fogo: #2f7bf7;
+}
+.fogo--branco {
+  --cor-fogo: var(--caos-branco);
+}

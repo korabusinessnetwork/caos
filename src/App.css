@@ -1,0 +1,17 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+.app__conteudo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: max(var(--esp-6), env(safe-area-inset-top)) var(--esp-4);
+  /* espaço pra barra de navegação fixa não cobrir o conteúdo */
+  padding-bottom: calc(84px + env(safe-area-inset-bottom));
+}

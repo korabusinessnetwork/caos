@@ -1,0 +1,17 @@
+.contador-social {
+  font-size: var(--txt-sm);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--caos-branco-70);
+  text-align: center;
+}
+
+.contador-social__num {
+  font-family: var(--fonte-titulo);
+  font-size: var(--txt-lg);
+  color: var(--caos-branco);
+}
+
+.contador-social__voce {
+  color: var(--caos-vermelho-vivo);
+}

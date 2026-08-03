@@ -1,0 +1,57 @@
+/* =============================================================================
+   Tokens — Design System "Atmosfera Viral" (docs/02_DESIGN_SYSTEM)
+   Paleta enxuta de 3 cores: reconhecimento em 0,5s no feed é o objetivo.
+   ========================================================================== */
+:root {
+  /* --- Paleta base (as 3 cores; nada além disso na v1) --- */
+  --caos-preto: #0a0a0a;
+  --caos-branco: #f5f5f5;
+  --caos-vermelho: #8b0000;
+
+  /* Derivadas (mesma família, só variação de intensidade/opacidade) */
+  --caos-preto-2: #141414;   /* superfície elevada sutil */
+  --caos-cinza: #6b6b6b;     /* texto secundário sobre preto */
+  --caos-vermelho-vivo: #c81212; /* acento em foco/hover */
+  --caos-branco-70: rgba(245, 245, 245, 0.7);
+  --caos-branco-40: rgba(245, 245, 245, 0.4);
+  --caos-linha: rgba(245, 245, 245, 0.12);
+
+  /* --- Tipografia --- */
+  --fonte-titulo: 'Archivo Black', 'Arial Black', system-ui, sans-serif;
+  --fonte-corpo: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  /* Escala (mobile-first, impacto máximo no card) */
+  --txt-xs: 0.75rem;
+  --txt-sm: 0.875rem;
+  --txt-md: 1rem;
+  --txt-lg: 1.25rem;
+  --txt-xl: 1.75rem;
+  --txt-2xl: 2.5rem;
+  --txt-hero: clamp(3rem, 14vw, 5.5rem);
+
+  /* --- Espaçamento --- */
+  --esp-1: 0.25rem;
+  --esp-2: 0.5rem;
+  --esp-3: 0.75rem;
+  --esp-4: 1rem;
+  --esp-5: 1.5rem;
+  --esp-6: 2rem;
+  --esp-8: 3rem;
+
+  /* --- Raio / bordas --- */
+  --raio-sm: 8px;
+  --raio-md: 14px;
+  --raio-lg: 22px;
+
+  /* --- Alvos de toque (acessibilidade: >= 44px) --- */
+  --toque-min: 44px;
+
+  /* --- Movimento --- */
+  --transicao: 180ms ease;
+
+  /* --- Cores semânticas de raridade (não depender só de cor: usar rótulo) --- */
+  --rar-comum: var(--caos-branco);
+  --rar-rara: var(--caos-vermelho);
+  --rar-lendaria: #d4af37;   /* dourado foil */
+  --rar-secreta: #7b2ff7;    /* roxo oculto */
+}

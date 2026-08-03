@@ -1,0 +1,125 @@
+.perfil {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-6);
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+/* --- Card compartilhável (watermark inegociável, como o card da quest) --- */
+.perfil__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--esp-4);
+  padding: var(--esp-6) var(--esp-5);
+  border: 1px solid var(--caos-vermelho);
+  border-radius: var(--raio-lg);
+  background:
+    radial-gradient(140% 90% at 50% 0%, rgba(139, 0, 0, 0.16), transparent 55%),
+    var(--caos-preto-2);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.perfil__watermark {
+  position: absolute;
+  right: -0.06em;
+  bottom: -0.12em;
+  z-index: 0;
+  font-family: var(--fonte-titulo);
+  font-size: 5rem;
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+  color: var(--caos-branco);
+  opacity: 0.05;
+  pointer-events: none;
+  user-select: none;
+}
+
+.perfil__card > *:not(.perfil__watermark) {
+  position: relative;
+  z-index: 1;
+}
+
+.perfil__nome {
+  font-family: var(--fonte-titulo);
+  font-size: var(--txt-lg);
+  letter-spacing: 0.02em;
+  color: var(--caos-branco);
+}
+
+.perfil__compartilhar {
+  min-height: var(--toque-min);
+  padding: 0 var(--esp-6);
+  border: none;
+  border-radius: var(--raio-sm);
+  background: var(--caos-vermelho);
+  color: var(--caos-branco);
+  font-family: var(--fonte-titulo);
+  font-size: var(--txt-md);
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: background var(--transicao);
+}
+
+.perfil__compartilhar:hover {
+  background: var(--caos-vermelho-vivo);
+}
+
+.perfil__secao-titulo {
+  font-size: var(--txt-sm);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--caos-branco-40);
+  margin-bottom: var(--esp-3);
+}
+
+.perfil__fogos {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-2);
+}
+
+.perfil__vazio {
+  font-size: var(--txt-sm);
+  line-height: 1.4;
+  color: var(--caos-branco-70);
+}
+
+.perfil__links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--esp-4);
+  padding-top: var(--esp-4);
+  border-top: 1px solid var(--caos-linha);
+}
+
+.perfil__link {
+  border: none;
+  background: none;
+  color: var(--caos-branco-70);
+  font-size: var(--txt-sm);
+  cursor: pointer;
+}
+
+.perfil__link:hover {
+  color: var(--caos-branco);
+}
+
+.perfil__sair {
+  border: none;
+  background: none;
+  color: var(--caos-branco-40);
+  font-size: var(--txt-xs);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.perfil__sair:hover {
+  color: var(--caos-vermelho-vivo);
+}

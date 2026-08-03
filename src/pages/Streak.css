@@ -1,0 +1,87 @@
+.streak {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--esp-6);
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+.streak__stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--esp-5);
+  flex-wrap: wrap;
+}
+
+.streak__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.streak__stat-num {
+  font-family: var(--fonte-titulo);
+  font-size: var(--txt-xl);
+  color: var(--caos-branco);
+}
+
+.streak__stat-rot {
+  font-size: var(--txt-xs);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--caos-branco-40);
+}
+
+/* --- Calendário do mês --- */
+.streak__cal {
+  width: 100%;
+}
+
+.streak__cal-semana,
+.streak__cal-grade {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--esp-2);
+}
+
+.streak__cal-semana {
+  margin-bottom: var(--esp-2);
+}
+
+.streak__cal-dow {
+  text-align: center;
+  font-size: var(--txt-xs);
+  letter-spacing: 0.1em;
+  color: var(--caos-branco-40);
+}
+
+.streak__cal-dia {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  border-radius: var(--raio-sm);
+  border: 1px solid var(--caos-linha);
+  font-size: var(--txt-sm);
+  color: var(--caos-branco-70);
+}
+
+.streak__cal-dia--vazio {
+  border-color: transparent;
+}
+
+.streak__cal-dia--cumprido {
+  background: var(--caos-vermelho);
+  border-color: var(--caos-vermelho);
+  color: var(--caos-branco);
+  font-weight: 700;
+}
+
+.streak__cal-dia--hoje {
+  border-color: var(--caos-branco);
+  box-shadow: 0 0 0 1px var(--caos-branco) inset;
+}

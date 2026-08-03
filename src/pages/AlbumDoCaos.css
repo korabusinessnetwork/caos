@@ -1,0 +1,98 @@
+.album {
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.album__topo {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: var(--esp-5);
+}
+
+.album__titulo {
+  font-size: var(--txt-xl);
+  color: var(--caos-branco);
+}
+
+.album__contagem {
+  font-size: var(--txt-xs);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--caos-branco-40);
+}
+
+.album__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: var(--esp-3);
+}
+
+.carta-mini {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--esp-2);
+  aspect-ratio: 3 / 4;
+  padding: var(--esp-3);
+  border: 1px solid var(--cor-rar, var(--caos-linha));
+  border-radius: var(--raio-md);
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgba(139, 0, 0, 0.12), transparent 60%),
+    var(--caos-preto-2);
+  text-align: center;
+  overflow: hidden;
+}
+
+.carta-mini__forma {
+  font-size: var(--txt-xl);
+  color: var(--cor-rar, var(--caos-branco));
+}
+
+.carta-mini__nome {
+  font-family: var(--fonte-titulo);
+  font-size: var(--txt-xs);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--caos-branco);
+  line-height: 1.1;
+}
+
+.carta-mini__selo {
+  position: absolute;
+  top: var(--esp-2);
+  right: var(--esp-2);
+  padding: 1px var(--esp-2);
+  border-radius: var(--raio-sm);
+  background: var(--caos-vermelho);
+  color: var(--caos-branco);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.carta-mini--comum {
+  --cor-rar: var(--rar-comum);
+}
+.carta-mini--rara {
+  --cor-rar: var(--rar-rara);
+}
+.carta-mini--lendaria {
+  --cor-rar: var(--rar-lendaria);
+}
+.carta-mini--secreta {
+  --cor-rar: var(--rar-secreta);
+}
+
+.carta-mini--silhueta {
+  border-style: dashed;
+  border-color: var(--caos-linha);
+  background: transparent;
+}
+
+.carta-mini--silhueta .carta-mini__forma {
+  color: var(--caos-branco-40);
+}

@@ -1,0 +1,54 @@
+.nav-inf {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-around;
+  padding: var(--esp-2) var(--esp-2)
+    max(var(--esp-2), env(safe-area-inset-bottom));
+  background: rgba(10, 10, 10, 0.82);
+  backdrop-filter: blur(14px);
+  border-top: 1px solid var(--caos-linha);
+}
+
+.nav-inf__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--esp-1);
+  flex: 1;
+  min-height: var(--toque-min);
+  padding: var(--esp-2) 0;
+  border: none;
+  background: none;
+  color: var(--caos-branco-40);
+  font-family: var(--fonte-corpo);
+  font-size: var(--txt-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color var(--transicao);
+}
+
+.nav-inf__ponto {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: transparent;
+  transition: background var(--transicao), box-shadow var(--transicao);
+}
+
+.nav-inf__item--ativa {
+  color: var(--caos-branco);
+}
+
+.nav-inf__item--ativa .nav-inf__ponto {
+  background: var(--caos-vermelho-vivo);
+  box-shadow: 0 0 10px var(--caos-vermelho-vivo);
+}
+
+.nav-inf__item:hover {
+  color: var(--caos-branco-70);
+}

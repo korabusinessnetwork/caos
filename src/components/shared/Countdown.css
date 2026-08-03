@@ -1,0 +1,50 @@
+.countdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--esp-4);
+  padding: var(--esp-8) var(--esp-5);
+  text-align: center;
+}
+
+.countdown__rotulo {
+  font-size: var(--txt-sm);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--caos-branco-40);
+}
+
+.countdown__relogio {
+  display: flex;
+  align-items: baseline;
+  gap: var(--esp-1);
+  font-family: var(--fonte-titulo);
+  font-size: var(--txt-hero);
+  line-height: 1;
+  color: var(--caos-branco);
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 40px rgba(139, 0, 0, 0.5);
+}
+
+.countdown__num {
+  min-width: 1.6ch;
+  text-align: center;
+}
+
+.countdown__sep {
+  color: var(--caos-vermelho);
+  animation: countdown-piscar 1s step-end infinite;
+}
+
+@keyframes countdown-piscar {
+  50% {
+    opacity: 0.25;
+  }
+}
+
+.countdown__sub {
+  margin-top: var(--esp-2);
+  max-width: 26ch;
+  font-size: var(--txt-sm);
+  color: var(--caos-branco-70);
+}

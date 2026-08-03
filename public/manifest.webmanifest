@@ -1,0 +1,23 @@
+{
+  "name": "Caos Diário",
+  "short_name": "Caos",
+  "description": "Uma quest de caos por dia. Cumpra, filme, poste. O Brasil inteiro no mesmo desafio.",
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "start_url": "/?fonte=pwa",
+  "scope": "/",
+  "id": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0A0A0A",
+  "theme_color": "#0A0A0A",
+  "categories": ["social", "entertainment", "lifestyle"],
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

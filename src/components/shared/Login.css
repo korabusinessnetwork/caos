@@ -1,0 +1,104 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--esp-5);
+  width: 100%;
+  max-width: 340px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.login__chamada {
+  font-family: var(--fonte-titulo);
+  font-size: var(--txt-xl);
+  line-height: 1.05;
+  text-transform: uppercase;
+  text-wrap: balance;
+  color: var(--caos-branco);
+}
+
+.login__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-4);
+  width: 100%;
+}
+
+.login__campo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-2);
+  text-align: left;
+}
+
+.login__rotulo {
+  font-size: var(--txt-xs);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--caos-branco-40);
+}
+
+.login__input {
+  width: 100%;
+  min-height: var(--toque-min);
+  padding: 0 var(--esp-4);
+  border: 1px solid var(--caos-linha);
+  border-radius: var(--raio-sm);
+  background: var(--caos-preto-2);
+  color: var(--caos-branco);
+  font-size: var(--txt-md);
+  transition: border-color var(--transicao);
+}
+
+.login__input:focus {
+  outline: none;
+  border-color: var(--caos-vermelho-vivo);
+}
+
+.login__erro {
+  font-size: var(--txt-sm);
+  color: var(--caos-vermelho-vivo);
+}
+
+.login__aviso {
+  font-size: var(--txt-sm);
+  color: var(--caos-branco-70);
+}
+
+.login__botao {
+  min-height: var(--toque-min);
+  padding: 0 var(--esp-6);
+  border: none;
+  border-radius: var(--raio-sm);
+  background: var(--caos-vermelho);
+  color: var(--caos-branco);
+  font-family: var(--fonte-titulo);
+  font-size: var(--txt-md);
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: background var(--transicao);
+}
+
+.login__botao:hover:not(:disabled) {
+  background: var(--caos-vermelho-vivo);
+}
+
+.login__botao:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.login__troca {
+  border: none;
+  background: none;
+  color: var(--caos-branco-70);
+  font-size: var(--txt-sm);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.login__troca:hover {
+  color: var(--caos-branco);
+}

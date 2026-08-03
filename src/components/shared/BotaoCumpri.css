@@ -1,0 +1,125 @@
+.cumpri {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-3);
+  width: 100%;
+  max-width: 380px;
+}
+
+.cumpri__botao {
+  width: 100%;
+  min-height: 56px;
+  border-radius: var(--raio-md);
+  background: var(--caos-vermelho);
+  color: var(--caos-branco);
+  font-family: var(--fonte-titulo);
+  font-size: var(--txt-xl);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: transform var(--transicao), background var(--transicao),
+    box-shadow var(--transicao);
+  box-shadow: 0 10px 30px -10px rgba(139, 0, 0, 0.8);
+}
+
+.cumpri__botao:hover:not(:disabled) {
+  background: var(--caos-vermelho-vivo);
+  transform: translateY(-1px);
+}
+
+.cumpri__botao:active:not(:disabled) {
+  transform: translateY(1px) scale(0.99);
+}
+
+.cumpri__botao:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.cumpri__toggle {
+  align-self: center;
+  min-height: var(--toque-min);
+  color: var(--caos-branco-40);
+  font-size: var(--txt-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color var(--transicao);
+}
+
+.cumpri__toggle:hover:not(:disabled) {
+  color: var(--caos-branco);
+}
+
+.cumpri__campo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-2);
+}
+
+.cumpri__input {
+  width: 100%;
+  min-height: var(--toque-min);
+  padding: 0 var(--esp-4);
+  border: 1px solid var(--caos-linha);
+  border-radius: var(--raio-sm);
+  background: var(--caos-preto);
+  color: var(--caos-branco);
+  font-size: var(--txt-md);
+  transition: border-color var(--transicao);
+}
+
+.cumpri__input:focus {
+  outline: none;
+  border-color: var(--caos-branco-40);
+}
+
+.cumpri__input--erro {
+  border-color: var(--caos-vermelho-vivo);
+}
+
+.cumpri__dica {
+  font-size: var(--txt-xs);
+  color: var(--caos-vermelho-vivo);
+  letter-spacing: 0.04em;
+}
+
+.cumpri__erro {
+  text-align: center;
+  font-size: var(--txt-sm);
+  color: var(--caos-vermelho-vivo);
+}
+
+/* --- Sucesso: a carta "bate" na tela --- */
+.cumpri--sucesso {
+  align-items: center;
+  text-align: center;
+  gap: var(--esp-3);
+}
+
+.cumpri__selo-ok {
+  padding: var(--esp-2) var(--esp-5);
+  border-radius: var(--raio-sm);
+  background: var(--caos-branco);
+  color: var(--caos-preto);
+  font-family: var(--fonte-titulo);
+  font-size: var(--txt-xl);
+  letter-spacing: 0.1em;
+  animation: cumpri-bate 420ms cubic-bezier(0.2, 0.9, 0.3, 1.4);
+}
+
+.cumpri__msg {
+  font-size: var(--txt-sm);
+  color: var(--caos-branco-70);
+  letter-spacing: 0.02em;
+}
+
+@keyframes cumpri-bate {
+  0% {
+    transform: scale(0.4) rotate(-6deg);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) rotate(0);
+    opacity: 1;
+  }
+}
