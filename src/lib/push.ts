@@ -38,8 +38,8 @@ export async function pedirPermissao(): Promise<NotificationPermission> {
 
 /**
  * Cria (ou reusa) a inscrição de push do navegador. Retorna a PushSubscription
- * — quem a persiste no backend é a camada de dados na fase M4.
- * Lança se não houver suporte, permissão negada ou VAPID ausente.
+ * — a persistência no backend fica em `salvarInscricao` (chamada por
+ * `ativarNotificacoes`). Lança se não houver suporte, permissão negada ou VAPID ausente.
  */
 export async function inscreverPush(): Promise<PushSubscription> {
   if (!pushSuportado()) {

@@ -68,7 +68,7 @@
 
 | Data | Aprendizado | Lição/Ação |
 |---|---|---|
-| _(vazio)_ | | |
+| 2026-08-02 | Exclusão de conta (LGPD, item v1) parecia "pronta": o serviço `excluirConta()` e a Edge Function `excluir-conta` existiam — mas **nenhuma tela chamava**, então o titular não tinha como apagar os dados. Backend pronto ≠ feature pronta. | Ao dar um item por feito, seguir a corrente até a **UI que dispara** (grep do serviço no `src/`). No `/proximo`, tratar "serviço existe mas sem chamador" como gap desbloqueado de alto valor, não como concluído. |
 
 ## Aprendizados de Negócio
 

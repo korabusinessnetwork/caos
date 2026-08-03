@@ -3,6 +3,7 @@ import { EstadoTela, type Estado } from '../components/shared/EstadoTela';
 import { PortaoAuth } from '../components/shared/PortaoAuth';
 import { StreakBadge } from '../components/shared/StreakBadge';
 import { FogoBadge } from '../components/shared/FogoBadge';
+import { ExcluirConta } from '../components/shared/ExcluirConta';
 import { useAuth } from '../context/AuthContext';
 import { useNavegacao } from '../context/NavegacaoContext';
 import { tituloPorStreak } from '../lib/dominio/streak';
@@ -119,6 +120,9 @@ function ConteudoPerfil() {
             </button>
           )}
         </nav>
+
+        {/* Exclusão de conta (LGPD) — só no fluxo real, sem sessão em demo. */}
+        {!modoDemo && <ExcluirConta />}
       </div>
     </EstadoTela>
   );
