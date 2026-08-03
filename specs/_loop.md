@@ -2,6 +2,20 @@
 
 > Uma seção por rodada, mais recente no topo. O ciclo não reinicia sozinho.
 
+## Rodada 5 — UI de exclusão de conta (`excluir-conta-ui`) — 2026-08-02
+- **Spec:** `specs/excluir-conta-ui.md`
+- **Resultado da review:** aprovado sem ressalvas (9/9; suíte verde, `tsc` limpo, `vite build` OK).
+  Sem correção na review. Verificado no browser (MODO_DEMO): `Perfil` carrega, ação de exclusão
+  escondida no demo (gate `!modoDemo`). Fluxo real (2 passos → excluindo → erro/signOut) conferido por código.
+- **Aprendido:** `memory/learnings.md` (Processo: backend pronto ≠ feature pronta — LGPD delete existia
+  como serviço + Edge Function mas sem UI; seguir a corrente até o chamador).
+- **Commit:** _(preenchido após o commit)_ em `rodada-5-excluir-conta-ui`.
+- **Pendente de decisão:**
+  1. Ranking público — o que expor (apelido? opt-in?) por ser LGPD-sensível (público 16+).
+- **Próximo item recomendado:** persistência da inscrição de Web Push (`push.ts` só assina no cliente;
+  falta salvar a subscription no backend p/ o `enviar-toque` ter destino) — desbloqueia os 4 toques diários.
+  **Requer backend** (tabela `push_subscriptions` + RLS + migration + Edge Function receptora) → decisão do dono se entra agora.
+
 ## Rodada 4 — total da temporada no álbum (`total-temporada`) — 2026-08-02
 - **Spec:** `specs/total-temporada.md`
 - **Resultado da review:** aprovado sem ressalvas (8/8; suíte verde, `tsc` limpo, `vite build` OK).

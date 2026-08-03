@@ -73,8 +73,8 @@ export function aoMudarAuth(
 
 /**
  * Exclusão de conta (LGPD — público inclui menores). Apagar o usuário de
- * auth.users exige service_role, então roda numa Edge Function dedicada.
- * A função `excluir-conta` é implementada na fase de Edge Functions (M4).
+ * auth.users exige service_role, então roda na Edge Function dedicada
+ * `excluir-conta`. No sucesso, encerra a sessão local (signOut).
  */
 export async function excluirConta(): Promise<void> {
   const { error } = await supabase.functions.invoke('excluir-conta');
