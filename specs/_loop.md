@@ -10,7 +10,7 @@
 - **Destravou:** a decisão LGPD do ranking (parada desde a Rodada 1) — o dono definiu apelido opt-in, só dias provados.
 - **Aprendido:** `memory/patterns.md` (padrão "agregado público sobre dado com RLS por usuário" via
   função `security definer` minimizada; nunca abrir SELECT alheio na tabela-base).
-- **Commit:** _(preenchido após o commit)_ em `rodada-6-ranking-publico`.
+- **Commit:** ✅ `8f726e9` em `rodada-6-ranking-publico` (push para `github.com/korabusinessnetwork/caos`).
 - **Proposta de ADR pendente:** ADR-011 (Ranking público: apelido opt-in, só dias provados) — texto
   apresentado ao dono; **aguardando aval** antes de gravar em `docs/08_DECISOES/`.
 - **Pendente de decisão:**
