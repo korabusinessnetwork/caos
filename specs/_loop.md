@@ -9,7 +9,7 @@
   sem erro. Ramo real conferido por código (RLS `auth.uid()`, campos explícitos, dia via `partesEmSP`).
 - **Aprendido:** `memory/learnings.md` (mês da consulta = mês local da grade; só o dia da célula em SP —
   alinhamento grade × marcações enquanto público é BR/UTC−3).
-- **Commit:** _(preenchido após o commit)_ em `rodada-3-calendario-real`.
+- **Commit:** ✅ `771202c` em `rodada-3-calendario-real` (push para `github.com/korabusinessnetwork/caos`).
 - **Pendente de decisão:**
   1. Ranking público — o que expor (apelido? opt-in?) por ser LGPD-sensível (público 16+).
 - **Próximo item recomendado:** banco de 90 quests curadas (conteúdo do M0-lançamento) **ou** tela de
