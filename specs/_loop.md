@@ -9,7 +9,7 @@
   escondida no demo (gate `!modoDemo`). Fluxo real (2 passos → excluindo → erro/signOut) conferido por código.
 - **Aprendido:** `memory/learnings.md` (Processo: backend pronto ≠ feature pronta — LGPD delete existia
   como serviço + Edge Function mas sem UI; seguir a corrente até o chamador).
-- **Commit:** _(preenchido após o commit)_ em `rodada-5-excluir-conta-ui`.
+- **Commit:** ✅ `752cdfe` em `rodada-5-excluir-conta-ui` (push para `github.com/korabusinessnetwork/caos`).
 - **Pendente de decisão:**
   1. Ranking público — o que expor (apelido? opt-in?) por ser LGPD-sensível (público 16+).
 - **Próximo item recomendado:** persistência da inscrição de Web Push (`push.ts` só assina no cliente;
