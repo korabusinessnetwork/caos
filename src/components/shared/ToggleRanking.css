@@ -1,0 +1,73 @@
+/* Opt-in do ranking nacional — controle claro, 3 cores do design system. */
+.toggle-rank {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-4);
+  padding: var(--esp-4);
+  border: 1px solid var(--caos-linha);
+  border-radius: var(--raio-md);
+  background: var(--caos-preto-2);
+}
+
+.toggle-rank__texto {
+  flex: 1;
+  min-width: 0;
+}
+
+.toggle-rank__titulo {
+  font-size: var(--txt-sm);
+  color: var(--caos-branco);
+}
+
+.toggle-rank__sub {
+  margin-top: var(--esp-1);
+  font-size: var(--txt-xs);
+  line-height: 1.4;
+  color: var(--caos-branco-40);
+}
+
+.toggle-rank__erro {
+  margin-top: var(--esp-2);
+  font-size: var(--txt-xs);
+  color: var(--caos-vermelho-vivo);
+}
+
+/* O switch: alvo ≥ toque-min, estado ligado em vermelho vivo. */
+.toggle-rank__switch {
+  position: relative;
+  flex-shrink: 0;
+  width: 52px;
+  height: var(--toque-min);
+  padding: 0;
+  border: 1px solid var(--caos-linha);
+  border-radius: 999px;
+  background: var(--caos-preto);
+  cursor: pointer;
+  transition: background var(--transicao), border-color var(--transicao);
+}
+
+.toggle-rank__switch--on {
+  background: var(--caos-vermelho);
+  border-color: var(--caos-vermelho-vivo);
+}
+
+.toggle-rank__switch:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.toggle-rank__bolinha {
+  position: absolute;
+  top: 50%;
+  left: 6px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--caos-branco);
+  transform: translate(0, -50%);
+  transition: transform var(--transicao);
+}
+
+.toggle-rank__switch--on .toggle-rank__bolinha {
+  transform: translate(24px, -50%);
+}
